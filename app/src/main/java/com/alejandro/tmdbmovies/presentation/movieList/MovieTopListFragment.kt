@@ -4,7 +4,7 @@ import com.alejandro.tmdbmovies.R
 import com.alejandro.tmdbmovies.core.BaseFragment
 
 
-class MovieListFragment : BaseFragment(R.layout.f_movie_list)
+class MovieTopListFragment : BaseFragment(R.layout.f_movie_list)
 {
 
 }

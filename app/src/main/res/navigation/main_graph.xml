@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/movieListFragment">
+    app:startDestination="@id/moviePopularListFragment">
 
     <fragment
-        android:id="@+id/movieListFragment"
-        android:name="com.alejandro.tmdbmovies.presentation.movieList.MovieListFragment"
-        android:label="f_movie_list"
+        android:id="@+id/moviePopularListFragment"
+        android:name="com.alejandro.tmdbmovies.presentation.movieList.MoviePopularListFragment"
+        android:label="Peliculas"
         tools:layout="@layout/f_movie_list">
         <action
-            android:id="@+id/action_movieList_to_movieDetail"
+            android:id="@+id/actionPopularToDetail"
             app:destination="@id/movieDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -21,5 +21,17 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.alejandro.tmdbmovies.presentation.movieDetail.MovieDetailFragment"
-        android:label="MovieDetailFragment" />
+        android:label="Detalle" />
+    <fragment
+        android:id="@+id/movieTopListFragment"
+        android:name="com.alejandro.tmdbmovies.presentation.movieList.MovieTopListFragment"
+        android:label="Peliculas">
+        <action
+            android:id="@+id/actionTopToDetail"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 </navigation>
