@@ -10,5 +10,6 @@
     <color name="white_back">#FBFBFC</color>
 
     <color name="ic_launcher_background">#2281DC</color>
+    <color name="placeholder_bg">#dddddd</color>
 
 </resources>

@@ -21,7 +21,31 @@
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.alejandro.tmdbmovies.presentation.movieDetail.MovieDetailFragment"
-        android:label="Detalle" />
+        android:label="Detalle" >
+        <argument
+            android:name="movieUrl"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="movieBackUrl"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="overview"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="language"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="releaseDate"
+            android:defaultValue="" />
+    </fragment>
     <fragment
         android:id="@+id/movieTopListFragment"
         android:name="com.alejandro.tmdbmovies.presentation.movieList.MovieTopListFragment"

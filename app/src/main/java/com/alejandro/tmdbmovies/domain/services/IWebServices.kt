@@ -6,9 +6,9 @@ import retrofit2.http.Query
 
 interface IWebServices
 {
-    @GET("top_rated")
+    @GET("movie/top_rated")
     suspend fun obtainTopRatedMovies(@Query("api_key") apiKey: String): MoviesResponse
 
-    @GET("popular")
+    @GET("movie/popular")
     suspend fun obtainPopularMovies(@Query("api_key") apiKey: String): MoviesResponse
 }

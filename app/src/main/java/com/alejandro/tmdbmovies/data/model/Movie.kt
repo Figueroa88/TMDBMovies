@@ -18,6 +18,7 @@ data class Movie(
         val posterPath: String = "",
         @SerializedName("release_date")
         val releaseDate: String = "",
+        @SerializedName("title")
         val title: String = "",
         val video: Boolean = false,
         @SerializedName("vote_average")
@@ -25,19 +26,6 @@ data class Movie(
         @SerializedName("vote_count")
         val voteCount: Int = -1
 )
-{
-    init
-    {
-        if (title.isEmpty())
-        {
-            throw IllegalArgumentException("La pelicula debe tener un titulo")
-        }
-        else if (overview.isEmpty())
-        {
-            throw IllegalArgumentException("La pelicula debe tener una descripción")
-        }
-    }
-}
 
 fun Movie.toMovieEntity(type: String): MovieEntity = MovieEntity(
         this.id,
