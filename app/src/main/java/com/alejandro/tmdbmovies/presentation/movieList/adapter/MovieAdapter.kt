@@ -3,18 +3,34 @@ package com.alejandro.tmdbmovies.presentation.movieList.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.alejandro.tmdbmovies.core.BaseViewHolder
 import com.alejandro.tmdbmovies.data.model.Movie
 import com.alejandro.tmdbmovies.databinding.ItemRowMovieBinding
 import com.bumptech.glide.Glide
 
+
+/**
+ * @since 1.0.0
+ *
+ * createdDate 26/04/2021
+ * updatedDate 26/04/2021
+ *
+ * ADAPTER para el manejo de los elementos del listado de peliculas populares y top rated
+ */
 class MovieAdapter(
     private val mItemList: List<Movie> = mutableListOf(),
     private val mRowListener: IItemClickListener
-) : RecyclerView.Adapter<BaseViewHolder<*>>()
+) : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>()
 {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*>
+    ////////////////////////////
+    ///                      ///
+    ///       OVERRIDE       ///
+    ///                      ///
+    ////////////////////////////
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder
     {
         val itemBinding =
             ItemRowMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,12 +38,9 @@ class MovieAdapter(
         return MoviesViewHolder(itemBinding, parent.context)
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int)
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int)
     {
-        when (holder)
-        {
-            is MoviesViewHolder -> holder.bind(mItemList[position])
-        }
+        holder.bind(mItemList[position])
     }
 
     override fun getItemCount(): Int
@@ -35,7 +48,13 @@ class MovieAdapter(
         return mItemList.size
     }
 
-    private inner class MoviesViewHolder(val binding: ItemRowMovieBinding, val context: Context) :
+    ////////////////////////////
+    ///                      ///
+    ///     VIEW HOLDER      ///
+    ///                      ///
+    ////////////////////////////
+
+    inner class MoviesViewHolder(private val binding: ItemRowMovieBinding, val context: Context) :
         BaseViewHolder<Movie>(binding.root)
     {
         override fun bind(itemView: Movie)
@@ -46,12 +65,29 @@ class MovieAdapter(
             binding.tvMovieTitle.text = itemView.title
             binding.tvMovieOverride.text = itemView.overview
 
-            binding.clMovieRowContent.setOnClickListener {
-
-                mRowListener.onMovieClick(itemView)
-            }
+            onClickRowMovie(binding.clMovieRowContent, itemView)
         }
     }
+
+    ////////////////////////////
+    ///                      ///
+    ///       EVENTS         ///
+    ///                      ///
+    ////////////////////////////
+
+    private fun onClickRowMovie(clContent: ConstraintLayout, selectedMovie: Movie)
+    {
+        clContent.setOnClickListener {
+
+            mRowListener.onMovieClick(selectedMovie)
+        }
+    }
+
+    ////////////////////////////
+    ///                      ///
+    ///   EVENT INTERFACE    ///
+    ///                      ///
+    ////////////////////////////
 
     interface IItemClickListener
     {

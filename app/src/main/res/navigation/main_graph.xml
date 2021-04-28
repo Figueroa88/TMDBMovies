@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/moviePopularListFragment"
-        android:name="com.alejandro.tmdbmovies.presentation.movieList.MoviePopularListFragment"
+        android:name="com.alejandro.tmdbmovies.presentation.movieList.popularMovies.MoviePopularListFragment"
         android:label="Peliculas"
         tools:layout="@layout/f_movie_list">
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieTopListFragment"
-        android:name="com.alejandro.tmdbmovies.presentation.movieList.MovieTopListFragment"
+        android:name="com.alejandro.tmdbmovies.presentation.movieList.topRated.MovieTopListFragment"
         android:label="Peliculas">
         <action
             android:id="@+id/actionTopToDetail"

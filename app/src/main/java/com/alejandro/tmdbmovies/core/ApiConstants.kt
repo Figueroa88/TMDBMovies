@@ -1,4 +1,4 @@
-package com.alejandro.tmdbmovies.domain.client
+package com.alejandro.tmdbmovies.core
 
 object ApiConstants
 {

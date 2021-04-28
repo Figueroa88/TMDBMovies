@@ -5,8 +5,9 @@ import com.alejandro.tmdbmovies.data.local.entity.MovieEntity
 import com.alejandro.tmdbmovies.data.local.entity.toMovie
 import com.alejandro.tmdbmovies.data.model.Movie
 import com.alejandro.tmdbmovies.data.model.response.MoviesResponse
+import javax.inject.Inject
 
-class LocalDataSourceImpl(private val movieDao: IMovieDao) : ILocalDataSource
+class LocalDataSourceImpl @Inject constructor(private val movieDao: IMovieDao) : ILocalDataSource
 {
     override suspend fun saveMovies(movieList: List<MovieEntity>)
     {

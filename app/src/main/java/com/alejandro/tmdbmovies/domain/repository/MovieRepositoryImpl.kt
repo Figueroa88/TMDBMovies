@@ -6,8 +6,9 @@ import com.alejandro.tmdbmovies.data.local.entity.MovieEntity
 import com.alejandro.tmdbmovies.data.model.response.MoviesResponse
 import com.alejandro.tmdbmovies.data.model.toMovieEntity
 import com.alejandro.tmdbmovies.data.remote.IRemoteDataSource
+import javax.inject.Inject
 
-class MovieRepositoryImpl(
+class MovieRepositoryImpl @Inject constructor(
     private val mRemoteDataSource: IRemoteDataSource,
     private val mLocalDataSource: ILocalDataSource
 ) : IMovieRepository

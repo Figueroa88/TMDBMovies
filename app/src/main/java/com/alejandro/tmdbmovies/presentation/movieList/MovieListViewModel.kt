@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.alejandro.tmdbmovies.core.StatusCaller
 import com.alejandro.tmdbmovies.domain.repository.IMovieRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
+import javax.inject.Inject
 
-
-class MovieListViewModel(private val repository: IMovieRepository) : ViewModel()
+@HiltViewModel
+class MovieListViewModel @Inject constructor(private val repository: IMovieRepository) : ViewModel()
 {
     fun fetchPopularMovies() = liveData(Dispatchers.IO) {
 

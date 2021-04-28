@@ -7,9 +7,25 @@ import com.alejandro.tmdbmovies.core.BaseActivity
 import com.alejandro.tmdbmovies.databinding.ASplashBinding
 
 
+/**
+ * @since 1.0.0
+ *
+ * createdDate 26/04/2021
+ * updatedDate 26/04/2021
+ *
+ * ACTIVITY inicial de la app que muestra un SPLASH
+ */
 class SplashActivity : BaseActivity()
 {
+    //View
+
     private lateinit var mViewBinding: ASplashBinding
+
+    ////////////////////////////
+    ///                      ///
+    ///       OVERRIDE       ///
+    ///                      ///
+    ////////////////////////////
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -23,6 +39,12 @@ class SplashActivity : BaseActivity()
         initListener()
     }
 
+    ////////////////////////////
+    ///                      ///
+    ///         INIT         ///
+    ///                      ///
+    ////////////////////////////
+
     private fun initView()
     {
         supportActionBar?.hide()
@@ -34,6 +56,12 @@ class SplashActivity : BaseActivity()
     {
         animationListener(mViewBinding.mlContent)
     }
+
+    ////////////////////////////
+    ///                      ///
+    ///        EVENTS        ///
+    ///                      ///
+    ////////////////////////////
 
     private fun animationListener(mlContent: MotionLayout)
     {

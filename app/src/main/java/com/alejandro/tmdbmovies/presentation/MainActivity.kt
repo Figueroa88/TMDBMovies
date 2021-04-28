@@ -13,14 +13,32 @@ import androidx.navigation.ui.setupWithNavController
 import com.alejandro.tmdbmovies.R
 import com.alejandro.tmdbmovies.core.BaseActivity
 import com.alejandro.tmdbmovies.databinding.AMainBinding
-import com.alejandro.tmdbmovies.presentation.movieList.MoviePopularListFragment
-import com.alejandro.tmdbmovies.presentation.movieList.MovieTopListFragment
+import com.alejandro.tmdbmovies.presentation.movieList.popularMovies.MoviePopularListFragment
+import com.alejandro.tmdbmovies.presentation.movieList.topRated.MovieTopListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
 
+/**
+ * @since 1.0.0
+ *
+ * createdDate 26/04/2021
+ * updatedDate 26/04/2021
+ *
+ * ACTIVITY que servira como contenedor de la vistas de la app
+ */
+@AndroidEntryPoint
 class MainActivity : BaseActivity()
 {
-    private lateinit var mViewBinding:AMainBinding
+    //View
+
+    private lateinit var mViewBinding: AMainBinding
+
+    ////////////////////////////
+    ///                      ///
+    ///       INSTANCE       ///
+    ///                      ///
+    ////////////////////////////
 
     companion object
     {
@@ -30,34 +48,30 @@ class MainActivity : BaseActivity()
         }
     }
 
+    ////////////////////////////
+    ///                      ///
+    ///       OVERRIDE       ///
+    ///                      ///
+    ////////////////////////////
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         mViewBinding = AMainBinding.inflate(layoutInflater)
         setContentView(mViewBinding.root)
 
-        //val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val navView: BottomNavigationView = mViewBinding.navView
-
-        val navController = findNavController(R.id.fcvContent)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.moviePopularListFragment, R.id.movieTopListFragment
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
         //Initialize
 
         initView()
     }
 
-    private fun initView()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        super.onOptionsItemSelected(item)
+
+        onBackPressed()
+
+        return true
     }
 
     override fun onBackPressed()
@@ -75,16 +89,41 @@ class MainActivity : BaseActivity()
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    ////////////////////////////
+    ///                      ///
+    ///         INIT         ///
+    ///                      ///
+    ////////////////////////////
+
+    private fun initView()
     {
-        super.onOptionsItemSelected(item)
+        //Animacion
 
-        onBackPressed()
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
 
-        return true
+        //Configuracion de navegacion
+
+        val navView: BottomNavigationView = mViewBinding.navView
+
+        val navController = findNavController(R.id.fcvContent)
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.moviePopularListFragment, R.id.movieTopListFragment
+            )
+        )
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
-    fun showOrHideBottomBar(isShow:Boolean)
+    ////////////////////////////
+    ///                      ///
+    ///       METHODS        ///
+    ///                      ///
+    ////////////////////////////
+
+    fun showOrHideBottomBar(isShow: Boolean)
     {
         if (isShow)
         {
