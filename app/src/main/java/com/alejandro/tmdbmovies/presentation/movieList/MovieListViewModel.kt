@@ -9,6 +9,15 @@ import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 import javax.inject.Inject
 
+
+/**
+ * @since 1.0.0
+ *
+ * createdDate 26/04/2021
+ * updatedDate 26/04/2021
+ *
+ * VIEWMODEL para el manejo de la informacion de la vista de LISTADO DE PELICULAS
+ */
 @HiltViewModel
 class MovieListViewModel @Inject constructor(private val repository: IMovieRepository) : ViewModel()
 {

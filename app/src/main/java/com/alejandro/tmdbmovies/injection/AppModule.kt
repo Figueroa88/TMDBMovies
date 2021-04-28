@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.alejandro.tmdbmovies.data.local.database.MovieDatabase
 import com.alejandro.tmdbmovies.core.ApiConstants
-import com.alejandro.tmdbmovies.domain.services.IWebServices
+import com.alejandro.tmdbmovies.data.remote.service.IWebServices
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

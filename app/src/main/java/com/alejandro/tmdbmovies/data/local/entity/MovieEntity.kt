@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.alejandro.tmdbmovies.data.model.Movie
 import com.google.gson.annotations.SerializedName
+import java.lang.IllegalArgumentException
 
 
 @Entity
@@ -31,6 +32,15 @@ data class MovieEntity(
     val voteCount: Int = -1,
     val type: String = ""
 )
+{
+    init
+    {
+        if (title.isEmpty())
+        {
+            throw IllegalArgumentException("El id de la pelicula es invalido")
+        }
+    }
+}
 
 fun MovieEntity.toMovie(): Movie = Movie(
     this.id,

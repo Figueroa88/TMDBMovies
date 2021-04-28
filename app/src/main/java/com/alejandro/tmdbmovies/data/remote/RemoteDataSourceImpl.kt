@@ -2,7 +2,7 @@ package com.alejandro.tmdbmovies.data.remote
 
 import com.alejandro.tmdbmovies.data.model.response.MoviesResponse
 import com.alejandro.tmdbmovies.core.ApiConstants
-import com.alejandro.tmdbmovies.domain.services.IWebServices
+import com.alejandro.tmdbmovies.data.remote.service.IWebServices
 import javax.inject.Inject
 
 class RemoteDataSourceImpl @Inject constructor(private val webService: IWebServices) :

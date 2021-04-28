@@ -1,4 +1,4 @@
-package com.alejandro.tmdbmovies.domain.services
+package com.alejandro.tmdbmovies.data.remote.service
 
 import com.alejandro.tmdbmovies.data.model.response.MoviesResponse
 import retrofit2.http.GET
